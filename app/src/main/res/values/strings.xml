@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TmdbApp</string>
+    <string name="home_tab">Главная</string>
+    <string name="profile_tab">Профиль</string>
+    <string name="profile_login_title">Войдите в свой аккаунт</string>
+    <string name="profile_login_description">
+        Чтобы пользоваться правкой и возможностями рейтинга TMDB,
+        а также получить персональные рекомендации,
+        необходимо войти в свою учётную запись.
+        Если у вас нет учётной записи,
+        её регистрация является бесплатной и простой.
+    </string>
+    <string name="profile_login_label">Логин</string>
+    <string name="profile_password_label">Пароль</string>
+</resources>
