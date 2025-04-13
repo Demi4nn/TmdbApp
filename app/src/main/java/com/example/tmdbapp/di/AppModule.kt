@@ -1,7 +1,7 @@
 package com.example.tmdbapp.di
 
-import com.example.tmdbapp.data.api.NowPlayingService
-import com.example.tmdbapp.data.api.AuthenticateService
+import com.example.tmdbapp.feature.home.home.data.api.NowPlayingService
+import com.example.tmdb.feature.auth.data.api.AuthenticateService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

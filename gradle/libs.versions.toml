@@ -17,6 +17,9 @@ hiltVersion = "2.51.1"
 hiltNavigationComposeVersion = "1.2.0"
 
 voyagerVersion = "1.1.0-beta02"
+jetbrainsKotlinJvm = "2.0.21"
+appcompat = "1.6.1"
+material = "1.10.0"
 
 
 [libraries]
@@ -51,6 +54,8 @@ voyager-hilt = { group = "cafe.adriel.voyager", name = "voyager-hilt", version.r
 voyager-navigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "voyagerVersion" }
 voyager-navigator-tab = { group = "cafe.adriel.voyager", name = "voyager-tab-navigator", version.ref = "voyagerVersion" }
 voyager-navigator-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitions", version.ref = "voyagerVersion" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -62,4 +67,6 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 #Kapt
 kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 

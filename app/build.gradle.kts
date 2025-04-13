@@ -45,6 +45,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:common:network"))
+    implementation(project(":core:common:model"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:auth"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -62,12 +66,12 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Retrofit
-    implementation(libs.retrofit2)
-    implementation(libs.retrofit2GsonConverter)
+//    // Retrofit
+//    implementation(libs.retrofit2)
+//    implementation(libs.retrofit2GsonConverter)
 
-    //Coroutines
-    implementation(libs.coroutinesAndroid)
+//    //Coroutines
+//    implementation(libs.coroutinesAndroid)
 
     //Interceptor
     implementation(libs.okhttp3Logging)
@@ -82,8 +86,8 @@ dependencies {
     implementation(libs.voyager.navigator)
     implementation(libs.voyager.navigator.tab)
     implementation(libs.voyager.navigator.transitions)
-    // password icon visibility
-    implementation(libs.androidx.material.icons.extended)
+//    // password icon visibility
+//    implementation(libs.androidx.material.icons.extended)
 
 }
 

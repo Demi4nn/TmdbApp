@@ -21,4 +21,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "TmdbApp"
 include(":app")
- 
+include(":core")
+include(":core:network")
+include(":core:common")
+include(":core:common:network")
+include(":core:common:model")
+include(":feature")
+include(":feature:home")
+include(":feature:now_playing")
+include(":feature:auth")

@@ -7,4 +7,6 @@ plugins {
     // Настройка плагинов для Hilt
     alias(libs.plugins.hiltAndroid) apply false
     alias(libs.plugins.kotlinKapt) apply false
+    alias(libs.plugins.jetbrains.kotlin.jvm) apply false
+    alias(libs.plugins.android.library) apply false
 }
