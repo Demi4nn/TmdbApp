@@ -16,7 +16,7 @@ import cafe.adriel.voyager.navigator.tab.TabNavigator
 import com.example.tmdbapp.navigation.TabNavigationItem
 import com.example.tmdbapp.feature.home.home.presentation.NowPlayingTab
 import com.example.tmdb.feature.auth.presentation.ProfileTab
-import com.example.tmdbapp.ui.theme.TmdbAppTheme
+import com.example.tmdbapp.common.ui.TmdbAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            TmdbAppTheme {
+            com.example.tmdbapp.common.ui.TmdbAppTheme {
                 MainRoute()
             }
         }
@@ -54,7 +54,7 @@ fun MainRoute() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    TmdbAppTheme {
-       MainRoute()
+    com.example.tmdbapp.common.ui.TmdbAppTheme {
+        MainRoute()
     }
 }

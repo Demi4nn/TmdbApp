@@ -14,7 +14,9 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/common" />
             <option value="$PROJECT_DIR$/core/common/model" />
+            <option value="$PROJECT_DIR$/core/common/nav" />
             <option value="$PROJECT_DIR$/core/common/network" />
+            <option value="$PROJECT_DIR$/core/common/ui" />
             <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/auth" />

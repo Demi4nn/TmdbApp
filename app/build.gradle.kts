@@ -47,6 +47,7 @@ android {
 dependencies {
     implementation(project(":core:common:network"))
     implementation(project(":core:common:model"))
+    implementation(project(":core:common:ui"))
     implementation(project(":feature:home"))
     implementation(project(":feature:auth"))
 

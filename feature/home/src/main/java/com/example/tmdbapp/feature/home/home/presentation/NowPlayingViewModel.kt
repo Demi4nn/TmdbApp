@@ -23,39 +23,72 @@ class NowPlayingViewModel @Inject constructor(
     private val state = MutableStateFlow(initState())
     private val events = MutableSharedFlow<Event>()
 
+    private var pageCounter = 1
+
     fun getState(): StateFlow<MainState> = state.asStateFlow()
     fun getEvents(): SharedFlow<Event> = events.asSharedFlow()
 
     private fun initState() = MainState(
         isLoading = false,
+        isBottomLoading = false,
         items = emptyList()
     )
 
     init {
-        getNowPlayingMovies()
+        getInitialPlayingMovies()
     }
 
-    private fun getNowPlayingMovies() {
+    fun onAction(action: Action) {
+        when (action) {
+            is Action.ScrollToEndList -> {
+                viewModelScope.launch {
+                events.emit(Event.showError(message = "Грузись, пожалуйста"))
+                }
+            }
+        }
+    }
+
+    private fun getInitialPlayingMovies() {
         viewModelScope.launch {
             state.update { it.copy(isLoading = true) }
+            getNowPlayingMovies()
+            state.update { it.copy(isLoading = false) }
+        }
+    }
 
-                when (val result = repository.getData()) {
+    private suspend fun getNowPlayingMovies(page: Int = pageCounter) {
+       // viewModelScope.launch {
+                when (val result = repository.getNowPlayingMovies(page)) {
                     is com.example.tmdbapp.core.network.Result.Success -> {
-                        state.update { it.copy(items = result.data.results) }
+                        state.update { it.copy(items = it.items + result.data.results) }
                     }
                     else -> events.emit(Event.showError("Помогите"))
                 }
-            state.update { it.copy(isLoading = false) }
-            }
+
+          //  }
         }
+
+    fun getNewMovies() {
+        viewModelScope.launch {
+            state.update { it.copy(isBottomLoading = true) }
+            getNowPlayingMovies(++pageCounter)
+            state.update { it.copy(isBottomLoading = false) }
+        }
+
+    }
 
 
     data class MainState(
         val isLoading: Boolean,
+        val isBottomLoading: Boolean,
         val items: List<Results>
     )
 
     sealed interface Event {
         data class showError(val message: String): Event
+    }
+
+    sealed interface Action {
+        data object ScrollToEndList: Action
     }
 }

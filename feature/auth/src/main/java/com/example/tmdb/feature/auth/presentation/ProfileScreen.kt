@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import cafe.adriel.voyager.core.screen.Screen
 import com.example.tmdb.feature.auth.R
+import com.example.tmdbapp.common.ui.R.*
 
 class ProfileScreen: Screen {
     @Composable
@@ -69,7 +70,7 @@ class ProfileScreen: Screen {
             Box(modifier = Modifier
                 .fillMaxWidth()
                 .background(
-                    color = colorResource(R.color.primary)
+                    color = colorResource(color.primary)
                 )
                 .padding(16.dp)
             ) {
@@ -78,7 +79,7 @@ class ProfileScreen: Screen {
                         .width(64.dp)
                         .height(32.dp)
                         .align(Alignment.Center),
-                    painter = painterResource(R.drawable.ic_main_logo),
+                    painter = painterResource(drawable.ic_main_logo),
                     contentDescription = null
                 )
             }
@@ -97,7 +98,7 @@ class ProfileScreen: Screen {
                         .fillMaxWidth()
                         .padding(bottom = 4.dp)
                         .border(2.dp,
-                            color = if(state.loginError.isBlank()) colorResource(R.color.primary) else Color.Red,
+                            color = if(state.loginError.isBlank()) colorResource(color.primary) else Color.Red,
                             RoundedCornerShape(16.dp)),
                     value = state.login,
                     label = { Text(stringResource(R.string.profile_login_label))},
@@ -125,7 +126,7 @@ class ProfileScreen: Screen {
                         .fillMaxWidth()
                         .padding(bottom = 16.dp)
                         .border(2.dp,
-                            color = if(state.passwordError.isBlank()) colorResource(R.color.primary) else Color.Red,
+                            color = if(state.passwordError.isBlank()) colorResource(color.primary) else Color.Red,
                             RoundedCornerShape(16.dp)),
                     value = state.password,
                     label = { Text(stringResource(R.string.profile_password_label))},
@@ -183,7 +184,7 @@ class ProfileScreen: Screen {
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = colorResource(R.color.primary)
+                        containerColor = colorResource(color.primary)
                     ),
                     onClick = {
                         viewModel.onLoginClick()

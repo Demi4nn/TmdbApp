@@ -2,7 +2,7 @@ package com.example.tmdpapp.core.common.model.domain.now_playing
 
 data class Results(
     val adult: Boolean,
-    val backdropPath: String,
+    val backdropPath: String?, // !!!!!!!!!
     val genreIds: List<Int>,
     val id: Int,
     val originalLanguage: String,

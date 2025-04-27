@@ -1,6 +1,5 @@
-package com.example.tmdbapp.ui.theme
+package com.example.tmdbapp.common.ui
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -52,7 +51,7 @@ fun TmdbAppTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = com.example.tmdbapp.common.ui.Typography,
         content = content
     )
 }

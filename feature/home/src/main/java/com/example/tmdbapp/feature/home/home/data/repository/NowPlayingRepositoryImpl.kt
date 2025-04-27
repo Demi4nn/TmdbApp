@@ -15,9 +15,9 @@ class NowPlayingRepositoryImpl @Inject constructor(
     private val mapper: NowPlayingMapper
 ): NowPlayingRepository {
 
-    override suspend fun getData(): Result<NowPlaying> {
+    override suspend fun getNowPlayingMovies(page: Int): Result<NowPlaying> {
         val result  = responseHandler {
-            apiService.getData()
+            apiService.getNowPlayingMovies(page)
         }
 
         return when (result) {

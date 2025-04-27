@@ -42,6 +42,7 @@ android {
 dependencies {
     implementation(project(":core:common:model"))
     implementation(project(":core:common:network"))
+    implementation(project(":core:common:ui"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

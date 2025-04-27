@@ -5,15 +5,21 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +37,19 @@ class NowPlayingScreen: Screen {
         val viewModel = hiltViewModel<NowPlayingViewModel>()
         val state by viewModel.getState().collectAsState()
         val context = LocalContext.current
+        val scrollState = rememberLazyListState()
+        val firstItemVisible by remember {
+            derivedStateOf {
+                scrollState.firstVisibleItemIndex > state.items.size - 7
+            }
+        }
+
+        LaunchedEffect(firstItemVisible) {
+            if(firstItemVisible) {
+                viewModel.onAction(NowPlayingViewModel.Action.ScrollToEndList)
+                viewModel.getNewMovies()
+            }
+        }
 
         LaunchedEffect(key1 = context) {
             viewModel.getEvents().collect {
@@ -56,7 +75,8 @@ class NowPlayingScreen: Screen {
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(top = 8.dp, start = 8.dp)
+                contentPadding = PaddingValues(top = 8.dp, start = 8.dp),
+                state = scrollState
             ) {
                 items(state.items) {
                     Text(
@@ -74,6 +94,20 @@ class NowPlayingScreen: Screen {
                         text = it.overview,
                         color = Color.Black
                     )
+                }
+                if(state.isBottomLoading) {
+                    item {
+                        Box(modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 16.dp)
+                            .height(60.dp),
+                            contentAlignment = Alignment.Center
+                        )
+                        //Box(modifier = Modifier.fillMaxSize().align(Alignment.BottomCenter))
+                        {
+                            CircularProgressIndicator()
+                        }
+                    }
                 }
             }
         }
